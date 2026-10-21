@@ -13,7 +13,6 @@ TOPICS = ["two_pointers", "sliding_window"]
 
 def main():
     args = sys.argv[1:]
-    use_ref = "--ref" in args
     chosen = [a for a in args if a in TOPICS] or TOPICS
     counts = {"PASS": 0, "FAIL": 0, "TODO": 0}
 
@@ -23,7 +22,7 @@ def main():
         folders = sorted(f for f in os.listdir(topic_dir)
                          if os.path.isdir(os.path.join(topic_dir, f)))
         for folder in folders:
-            cmd = [sys.executable, "test.py"] + (["--ref"] if use_ref else [])
+            cmd = [sys.executable, "test.py"]
             proc = subprocess.run(cmd, cwd=os.path.join(topic_dir, folder),
                                   capture_output=True, text=True)
             output = proc.stdout + proc.stderr

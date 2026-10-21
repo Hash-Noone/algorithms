@@ -1,7 +1,6 @@
 """Tests for: Find All Anagrams in a String
 
     python test.py          # test your solution.py
-    python test.py --ref    # test reference_solution.py
 """
 import copy
 import os
@@ -10,11 +9,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-if "--ref" in sys.argv:
-    sys.argv.remove("--ref")
-    import reference_solution as sol
-else:
-    import solution as sol
+import solution as sol
 
 # (arguments, expected result)
 CASES = [
